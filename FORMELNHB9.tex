@@ -1,0 +1,877 @@
+\documentclass[12pt,a5paper,ngerman,titlepage]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{babel}
+\usepackage[paper=a5paper,left=15mm,right=15mm,top=20mm,bottom=20mm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{circuitikz}
+\usepackage[headsepline=1pt,automark]{scrlayer-scrpage}
+\automark{section}
+\clearpairofpagestyles
+\ihead{\leftmark}
+\ohead{\pagemark}
+\setkomafont{pagehead}{\footnotesize}% normale Schrift in Kopfzeile
+\renewcommand*\familydefault{\sfdefault}
+
+
+
+\title{\Huge \textbf{Formelsammlung} \\ \large für die \\HB3/9 Prüfung}
+\author{\textbf{Charpoan Kong HB9HJN}}
+\date{}
+ 
+\begin{document}
+\maketitle
+\pagenumbering{Roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}% Arabic page numbers (and reset to 1)
+\section{SI-Vorzeichen \& Einheiten}
+\begin{table}[!h]
+\begin{tabular}{ | l | l | l | l |}
+\hline
+T 		& Tera 	& $10^{12}$	 & 1000000000000	\\ \hline
+G 		& Giga 	& $10^9$ 	 & 1000000000 		\\ \hline
+M 		& Mega 	& $10^6$ 	 & 1000000 			\\ \hline
+k 		& Kilo 	& $10^3$ 	 & 1000	 			\\ \hline
+m 		& Milli & $10^{-3}$  & 0.001	 		\\ \hline
+$\mu$ 	& Mikro & $10^{-6}$  & 0.000001	 		\\ \hline
+n 		& Nano 	& $10^{-9}$  & 0.000000001	 	\\ \hline
+p 		& Pico 	& $10^{-12}$ & 0.000000000001	\\ \hline
+
+\end{tabular}
+\end{table}
+\begin{table}[!h]
+\begin{tabular}{ | l | l | l | l |}
+\hline
+Ladung 				& Q 	& Coulomb 			& $C=As$				 \\ \hline
+Spannung 			& U 	& Volt 	 			& $V$ 					 \\ \hline
+Leistung 			& L 	& Watt 	 			& $W$ 					 \\ \hline
+Arbeit 				& W 	& Wattsekunde 	 	& $VAs$	 				 \\ \hline
+Impedanz 			& R	 	& Ohm  				& $\Omega=\cfrac{V}{A}$	 \\ \hline
+Leitwert 			& G 	& Siemens  			& $S = \cfrac{1}{\Omega}$ \\ \hline
+Kapazität 			& C 	& Farad  			& $F = \cfrac{As}{V}$	 \\ \hline
+Induktivität		& L 	& Henry 			& $H = \cfrac{Vs}{A}$	 \\ \hline
+El. Feldstärke		& E 	& Volt pro Meter 	& $\cfrac{V}{m}$			 \\ \hline
+Mag. Feldstärke		& H 	& Ampere pro Meter 	& $\cfrac{A}{m}$			 \\ \hline
+Flussdichte			& B 	& Tesla 			& $T = \cfrac{Vs}{m^2}$	 \\ \hline
+Frequenz			& $f$ 	& Herz 				& $Hz = \cfrac{1}{s}$	 \\ \hline
+\end{tabular}
+\end{table}
+\newpage
+\section{Ohmisches/Leistungs Dreieck \& Wellenlänge}
+\subsection{Spannung}
+
+$$U=RI =\frac{P}{I} = \sqrt{PR}$$
+
+\subsection{Strom}
+$$I=\frac{P}{U}=\frac{U}{R}=\sqrt{\frac{P}{R}} $$
+
+\subsection{Wiederstand}
+$$R=\frac{U}{I}=\frac{P}{I^2}=\frac{U^2}{P} $$
+
+\subsection{Leistung}
+$$P=UI =\frac{U^2}{R} =RI^2$$
+\subsection{Wellenlänge \& Frequenz}
+\[
+\begin{minipage}{.5\linewidth}
+  $\lambda=\cfrac{c}{f}$ \\[5pt]
+  $f=\cfrac{c}{\lambda}$
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $c = Lichtgeschwindugkeit \approx 3*10^{8}$ \\
+  $c = 2.99792458*10^{8}$
+
+\end{minipage}
+\]
+\newpage
+\section{Widerstand \& Leistung}
+\subsection{Serieschaltung}
+$$R_{\sum} = \sum R_{i}$$
+
+\subsection{Paralellschaltung}
+$$R_{\sum} = \frac{1}{\sum \frac{1}{R_{i}}}$$
+
+\subsection{Leiterwiderderstand}
+\[
+\begin{minipage}{.5\linewidth}
+  $R=\cfrac{\rho l}{A}$ 
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $\rho = spezifischer \; Widerstand$
+
+\end{minipage}
+\]
+\subsection{Spannungsteiler}
+$$U_{x}=R_{x}\frac{U}{R_{ges}}$$
+
+\subsection{Wirkungsgrad}
+\[
+\begin{minipage}{.5\linewidth}
+  $\eta = \cfrac{P_{out}}{P_{in}}$ \\[5pt]
+  $P_{in} = P_{out}+P_{V}$
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $P_{V} = Verlustleistung$
+
+\end{minipage}
+\]
+\newpage
+\section{Wechselstrom}
+\subsection{Effektivspannung}
+\subsubsection{Sinus}
+$$U_{eff}=\cfrac{\text{\^{U}}}{\sqrt{2}}$$
+\subsubsection{Dreieck}
+$$U_{eff}=\cfrac{\text{\^{U}}}{\sqrt{3}}$$
+\subsubsection{Rechteck}
+$$U_{eff}=\text{\^{U}}\sqrt{DutyCycle}$$
+\newpage
+\section{Kondensator}
+\subsection{Kapazität}
+\[
+\begin{minipage}{.5\linewidth}
+	
+  $C = \varepsilon_{0} \varepsilon_{r} \cfrac{A}{d}$
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $\varepsilon_{0} = Elektrische \; Feldkonstante$ \\
+  $\varepsilon_{r} = Permittivit\ddot{a}t$ \\
+  $\varepsilon_{0} = 8.854187817*10^{-12}$
+
+\end{minipage}
+\]
+
+\subsection{Serieschaltung}
+$$C_{\sum} = \frac{1}{\sum \frac{1}{C_{i}}}$$
+
+\subsection{Paralellschaltung}
+$$C_{\sum} = \sum C_{i}$$
+
+\subsection{$\tau$/Zeitkonstante}
+\begin{align*}
+&\tau = RC\\[5pt]
+&\lim_{U \to 0\%/100\%}\Delta t = 5\tau 
+\end{align*}
+
+\subsection{Dreh-/Plattenkondensator}
+\[
+\begin{minipage}{.5\linewidth}
+  \centering
+  $C_{p}=\cfrac{f_{u}^2 \Delta C}{f_{o}^2-f_{u}^2}-C_{a}$
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+\fontsize{8pt}{9pt}\selectfont
+  $C_{p} = Paralellkapazit\ddot{a}t$ \\
+  $C_{a} = Anfangskapazit\ddot{a}t$ \\
+  $f_{u} = untere \; Frequenz$ \\
+  $f_{o} = obere \; Frequenz$ \\
+  $\Delta C = Kapazit\ddot{a}t \; des \; Drehko$ 
+\end{minipage}
+\]
+\subsection{Kapazitiver Blindwiederstand}
+
+\begin{align*}
+&X_{c} = \frac{U}{I} = \frac{1}{\omega C} = \frac{1}{2\pi fC} \\[5pt]
+&C=\frac{1}{\omega X_{c}} = \frac{1}{2\pi fX_{c}} \\[5pt]
+&f=\frac{1}{2\pi X_{c}C} \\[5pt]
+&I =\frac{U}{X_{c}}
+\end{align*}
+\subsection{Verlustfaktor/Güte}
+\[
+\begin{minipage}{.5\linewidth}
+	
+  $\tan \delta = \cfrac{I_{R}}{I_{c}} = \cfrac{X_{c}}{R_{p}}$\\[5pt]
+  $Q = \cfrac{R_{p}}{X_{c}}$
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $R_{p} = paraleller \; Verlustwiederstand$ \\
+  $I_{R} = Strom \; durch \; R_{v}$ \\
+  $I_{C} = Strom \; durch \; Kondensator$ \\
+
+\end{minipage}
+\]
+\newpage
+\section{Spule}
+\subsection{Induktivität}
+\[
+\begin{minipage}{.5\linewidth}
+  $L=\cfrac{\mu_{0}\mu_{r}AN^2}{l}=A_{L}N^2$ \\[5pt]
+  $A_{L}=\cfrac{\mu_{0}\mu_{r}A}{l}$
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $\mu_{0} = Permeabilit\ddot{a}t \;im \; luftleeren \; Raum$ \\
+  $\mu_{r} = Permeabilit\ddot{a}t \; des \; Kernmaterials$ \\
+  $A_{L} = Wert \; vorgefertigter \; Kerne$ \\
+
+\end{minipage}
+\]
+\subsection{Induktion- \& Selbstinduktionspannung}
+\begin{align*}
+&U_{ind}=-L\frac{\Delta I}{\Delta t} \\[5pt]
+&L = -U_{ind}\frac{\Delta t}{\Delta I}
+\end{align*}
+
+\subsection{Serieschaltung}
+$$L_{\sum} = \sum L_{i}$$
+
+\subsection{Paralellschaltung}
+$$L_{\sum} = \frac{1}{\sum \frac{1}{L_{i}}}$$
+
+\subsection{$\tau$/Zeitkonstante}
+
+$$\tau = \frac{L}{R}$$
+
+
+\subsection{Verlustfaktor/Güte}
+\[
+\begin{minipage}{.5\linewidth}
+	
+  $\tan \delta = \cfrac{I_{R}}{I_{L}} = \cfrac{R_{s}}{X_{L}}$\\[5pt]
+  $Q = \cfrac{X_{L}}{R_{s}}$
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $R_{s} = serielle \; Verlustwiederstand$ \\
+  $I_{R} = Strom \; durch \; R_{v}$ \\
+  $I_{L} = Strom \; durch \; Spule$ \\
+
+\end{minipage}
+\]
+\subsection{Induktiver Blindwiederstand}
+\begin{align*}
+&X_{L} = \omega L=2\pi fL \\[5pt]
+&L = \frac{X_{L}}{\omega} = \frac{X_{L}}{2\pi f} \\[5pt]
+&f = \frac{X_{L}}{2\pi L}
+\end{align*}
+\newpage
+\section{Impedanz}
+\subsection{Serieschaltung}
+$$Z=\sqrt{R^2+(X_{L}-X_{C})^2}$$
+
+\subsection{Paralellschaltung}
+$$Z=\sqrt{\frac{1}{R}^2+\left(\frac{1}{X_{L}}-\frac{1}{X_{C}}\right)^2}$$
+\newpage
+\section{Transformator/Übertrager}
+\subsection{Spannungs-/Strom-/Windungs-/ Wiederstandsübersetzung}
+\begin{align*}
+&\ddot{u}=\cfrac{U_{1}}{U_{2}}=\cfrac{N_{1}}{N_{2}}=\cfrac{I_{2}}{I_{1}} =\sqrt{\cfrac{Z_{1}}{Z_{2}}} \\[5pt]
+&I_{1}=I_{2}\cfrac{U_{2}}{U_{1}} = I_{2}\cfrac{N_{2}}{N_{1}} =I_{2}\sqrt{\cfrac{Z_{2}}{Z_{1}}}\\[5pt]
+&I_{2}=I_{1}\cfrac{U_{1}}{U_{2}} = I_{1}\cfrac{N_{1}}{N_{2}} =I_{1}\sqrt{\cfrac{Z_{1}}{Z_{2}}}\\[5pt]
+\end{align*}
+\subsection{Stromdichte}
+$$S=\frac{I}{A}$$
+\newpage
+\section{RC-Glied}
+\subsection{Grenzfrequenz}
+\begin{align*}
+&f_{g}=\frac{1}{2\pi RC} \\[5pt]
+&C =\frac{1}{2\pi f_{g}R} \\[5pt]
+&R =\frac{1}{2\pi f_{g}C}
+\end{align*}
+
+\subsection{Shape-Faktor}
+$$ShapeFaktor=\frac{Bandbreite \; bei \;60db}{Bandbreite \; bei \; 6db}$$
+\newpage
+\section{Dezibel}
+\subsection{Dezibel bei Leistug}
+$$\nu=10\log{\left(\frac{P_{out}}{P_{in}}\right)}$$
+\subsection{Dezibel bei Spannung}
+$$\nu=20\log{\left(\frac{U_{out}}{U_{in}}\right)}$$
+\newpage
+\section{LC-Schwingkreis}
+\subsection{Resonanzfrequenz}
+$$f_{res} = \frac{1}{2\pi \sqrt{LC}} = \frac{f_{max}+f_{min}}{2}$$
+\begin{align*}
+&L = \frac{1}{(2\pi f)^2C} \\[5pt]
+&C = \frac{1}{(2\pi f)^2L} \\[5pt]
+\end{align*}
+ 
+\subsection{Bandbreite}
+$$b = f_{max}-f_{min}= \frac{f_{res}}{Q}$$
+\subsection{Güte}
+\[
+\begin{minipage}{.5\linewidth}
+	
+  $Q = \cfrac{1}{R_{s}}*\sqrt{\cfrac{L}{C}} = \cfrac{f_{res}}{b}= \cfrac{R_{p}}{X_{L}} =$ \\[5pt]
+  $ \cfrac{X_{L}}{R_{s}} $ \\[5pt]
+  $b = \cfrac{R_{s}}{2\pi L}$\\[5pt]
+  $R_{s} = \cfrac{1}{Q}*\sqrt{\cfrac{L}{C}}$\\[5pt]
+  $R_{res} = \cfrac{2 \pi f_{res} L}{Q}$
+
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $R_{s} = serieller \; Verlustwiederstand $ \\
+  $R_{res} = Resonanz \; Verlustwiederstand $ \\
+  $R_{p} = paraleller \; Verlustwiederstand $ \\
+
+
+\end{minipage}
+\]
+\newpage
+\section{Diode}
+\subsection{Vorwiderstand}
+$$R=\frac{U_{cc}-U_{F}}{I_{F}}$$
+\subsection{Spannungsfestigkeit/Max. Spannung}
+$$U=U_{in}*\sqrt{2}_{oder \; anderer \;Faktor \; Spitzenspannung}$$
+\newpage
+\section{Transistor/FET}
+
+
+\begin{center}
+\begin{circuitikz}[scale=0.75,transform shape] \draw
+(0,6) to[ short, o-o ] (6,6)
+(0,0) node[anchor=east] {$-$}
+(0,6) node[anchor=east] {$+$}
+(0,3) node[anchor=east] {$in$}
+(6,3.5) node[anchor=west] {$out$}
+(2,0) to[ R, l_=$R_2$, *- ] (2,3)
+(2,3) to[ R, l_=$R_1$, *-* ] (2,6)
+(0,3) to[ C, l_=$C_1$, o- ] (2,3)
+
+(4,6) to[ R,i_=$I_{C}$, l_=$R_C$, *- ] (4,3.5)
+(4,3.5) to[ C, l_=$C_2$, *-o ] (6,3.5)
+(4,2) to[ R, l_=$R_E$, *-* ] (4,0)
+(5,0) to[ C, l_=$C_E$, *- ] (5,2)
+(4,2) to[ short, *- ] (5,2) 
+(4,2)  to[Tnpn] (4,4)
+(2,3) to[ short,i_=$I_{B}$, *- ] (3.5,3)
+(0,0) to[ short, o-o ] (6,0); 
+\end{circuitikz}
+\end{center}
+
+\subsection{Stromverstärkungsfaktor}
+$$\beta = \frac{I_{C}}{I_{B}}$$
+
+\subsection{$R_{1}$}
+\begin{align*}
+& I_{B} = \cfrac{I_{E}}{\beta + 1} \\[5pt]
+& I_{R_{1}} = 11 * I_{B}\\[5pt]
+& U_{R_{1}} = U - U_{BE}\\[5pt]
+& R_{1} = \cfrac{U_{R_{1}}}{I_{R_{1}}}\\[5pt]
+\end{align*}
+
+\subsection{$R_{C}$}
+\begin{align*}
+& I_{B} = \cfrac{I_{2}}{9}\\[5pt]
+& I_{C} = I_{B}\; \beta \\[5pt]
+& U_{R_{C}}=U-U_{C}\\[5pt]
+& R_{C} = \cfrac{U_{R_{C}}}{I_{c}}\\[5pt]
+\end{align*}
+
+\subsection{$I_{C}$}
+\begin{align*}
+& I_{E} = \cfrac{U_{E}}{R_{E}}\\[5pt]
+& I_{B} = \cfrac{I_{E}}{\beta + 1}\\[5pt]
+& I_{C} = I_{B}\; \beta \\[5pt]
+\end{align*}
+
+\subsection{$P_{V}$}
+\begin{align*}
+& U_{R_{C}} = R_{C} \; I_{C}\\[5pt]
+& U_{Transistor} = U-U_{R_{C}}\\[5pt]
+& P_{Verlust} = U_{Transistor} * I_{C}\\[5pt]
+\end{align*}
+
+\newpage
+\section{Operationsverstärker}
+\subsection{Invertierender Verstärker}
+\begin{center}
+\begin{circuitikz}[scale=0.75,transform shape] \draw
+(5,2) node[op amp] (opamp) {}
+(0,2.5) to[ R, l_=$R_1$, o- ] (opamp.-)
+(3,4) to[ short, -* ] (3,2.5)
+(7,4) to[ short, -* ] (7,2)
+(opamp.out) to[ short, - ] (8,2)
+(0,2.5) node[anchor=east] {$in$}
+(8,2) node[anchor=west] {$out$}
+(opamp.+) node[ground] {}
+(3,4) to[ R, l_=$R_2$, - ] (7,4);
+\end{circuitikz}
+\end{center}
+
+$$U_{out}=-U_{in}\frac{R_{2}}{R_{1}}$$
+
+\subsection{Nichtnvertierender Verstärker}
+\begin{center}
+\begin{circuitikz}[scale=0.75,transform shape] \draw
+(5,2) node[op amp] (opamp) {}
+(0,2.5) to[ R, l_=$R_1$, - ] (opamp.-)
+(0,2.5) node[ground] {}
+(3,4) to[ short, -* ] (3,2.5)
+(7,4) to[ short, -* ] (7,2)
+(opamp.out) to[ short, - ] (8,2)
+(0,1.5) node[anchor=east] {$in$}
+(8,2) node[anchor=west] {$out$}
+(0,1.5) to[ short, o- ] (opamp.+)
+(3,4) to[ R, l_=$R_2$, - ] (7,4);
+\end{circuitikz}
+\end{center}
+$$U_{out}=1+\frac{R_{2}}{R_{1}}$$
+
+\newpage
+\subsection{Differenzialverstärker}
+\begin{center}
+\begin{circuitikz}[scale=0.75,transform shape] \draw
+(5,4) node[op amp] (opamp) {}
+(0,4.5) to[ R, l_=$R_1$, o- ] (opamp.-)
+(3,6) to[ short, -* ] (3,4.5)
+(7,6) to[ short, -* ] (7,4)
+(opamp.out) to[ short, - ] (8,4)
+(0,4.5) node[anchor=east] {$in_1$}
+(0,3.5) node[anchor=east] {$in_2$}
+(8,4) node[anchor=west] {$out$}
+(0,3.5) to[ R, l_=$R_2$, o- ] (opamp.+)
+(3,3.5) to[ R, l_=$R_4$, *- ] (3,1)
+(3,1) node[ground] {}
+(3,6) to[ R, l_=$R_3$, - ] (7,6);
+\end{circuitikz}
+\end{center}
+\begin{align*}
+&\nu_{U1} = \cfrac{R_{3}}{R_{1}} \\[5pt]
+&\nu_{U2} = \cfrac{1+ \frac{R_{3}}{R_{1}}}{1+ \frac{R_{2}}{R_{4}}} \\[5pt]
+&U_{out} = U_{in2}*\nu_{U2}-U_{in1}*\nu_{U1} \\[5pt]
+\end{align*}
+\newpage
+\section{Elektromagnetisches Feld}
+
+\subsection{Elektrische Feldstärke}
+\begin{align*}
+&E=\cfrac{U}{d} \\[5pt]
+&\cfrac{E_{1}}{E_{2}}=\cfrac{d_{2}}{d_{1}} 
+\end{align*}
+
+\subsection{Magnetische Feldstärke}
+$$H=\cfrac{I}{d}$$
+
+\subsection{Magnetische Flussdichte}
+\[
+\begin{minipage}{.5\linewidth}
+	
+  $B= \mu_{0} \mu_{r} H$
+
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $\mu_{0} = Permeabili\ddot{a}t \; 4\pi *10^{-7}\cfrac{Vs}{Am}$ \\
+  $\mu_{r} = Permeabili\ddot{a}t \; des \; Materials $ \\
+
+
+\end{minipage}
+\]
+
+\subsection{Strahlungsdichte Kuglestrahler}
+\[
+\begin{minipage}{.5\linewidth}
+	
+  $S=\cfrac{P_{ERP}}{4\pi r^2}$
+
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $P_{ERP} = Leistung \; isotroper \; Strahler$
+\end{minipage}
+\]
+
+\subsection{Feldwellenwiederstand}
+\[
+\begin{minipage}{.5\linewidth}
+	
+  $Z_{0}=\cfrac{E}{H}=\sqrt{\cfrac{\mu_{0}}{\varepsilon_{0}}}=120\pi \Omega$
+
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $Z_{0} = Feldwellenwiederstand$
+\end{minipage}
+\]
+
+\subsection{Ersatzfeldstärke}
+\subsubsection{Allgemein}
+\[
+\begin{minipage}{.5\linewidth}
+	
+  $E=\cfrac{\sqrt{30 \Omega \: P_{ERIP}}}{r}$\\[5pt]
+  $E=\cfrac{1}{r}\sqrt{\cfrac{Z_{0}}{4 \pi} \; P_{ERIP}}$\\[5pt]
+
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $P_{ERIP} = Leistung \; isotroper \; Strahler$
+\end{minipage}
+\]
+
+\subsubsection{Dipol}
+$$E \approx 7\cfrac{\sqrt{P}}{r}$$
+
+\subsection{Brauchbare Grenzfrequenz}
+\[
+\begin{minipage}{.5\linewidth}
+	
+  $MUF \approx \cfrac{f_{k}}{\sin \alpha}$ 
+
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $MUF = maximum \; usable \; frequency$ \\
+  $f_{k} = kritische \; Frequenz$
+\end{minipage}
+\]
+
+\subsection{Optimale Grenzfrequenz}
+\[
+\begin{minipage}{.5\linewidth}
+	
+  $f_{opt} \approx 0.85 \; MUF$ 
+
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $MUF = maximum \; usable \; frequency$ \\
+  $f_{opt} = optimale \; Frequenz$
+\end{minipage}
+\]
+
+\newpage
+\section{Antennentechnik}
+
+\subsection{Dipol}
+\subsubsection{Länge}
+$$ l=n \; \cfrac{\lambda}{2}  \quad n \in \mathbb{N} $$
+
+\subsubsection{Verkürzung}
+$$ l = k \; \cfrac{\lambda}{2} \quad n \in [0.93,0.97]$$
+
+\subsection{Antennengewinn}
+\subsubsection{zum Dipol}
+\begin{align*}
+&G_{D} = \cfrac{P_{V}}{P_{D}} \\[5pt]
+&g_{d} = 10 \; log_{10}\left(\cfrac{P_{V}}{P_{D}}\right)dbd \\[5pt]
+&g_{d} = 20 \; log_{10}\left(\cfrac{E_{V}}{E_{D}}\right)dbd \\[5pt]
+\end{align*}
+
+\subsubsection{zum isotropen Strahler}
+\begin{align*}
+&G_{i} = \cfrac{P_{V}}{P_{i}} \\[5pt]
+&g_{i} = 10 \; log_{10}\left(\cfrac{P_{V}}{P_{i}}\right)dbd \\[5pt]
+&g_{i} = 20 \; log_{10}\left(\cfrac{E_{V}}{E_{i}}\right)dbd \\[5pt]
+\end{align*}
+\subsubsection{ERP}
+
+\begin{align*}
+&P_{ERP} = \cfrac{P_{ERIP}}{1.64} \\[5pt]
+&P_{ERP} = G_{D}\;P_{S} \\[5pt]
+&P_{ERP} = P_{S} \; 10^{\cfrac{g_{d}}{10db}}  \\[5pt]
+&P_{ERP} = G_{D}\; (P_{Sender}- P_{Verlust}) \\[5pt]
+\end{align*}
+
+\subsubsection{ERIP}
+
+\begin{align*}
+&P_{ERIP} = 1.64 \; P_{ERP}  \\[5pt]
+&P_{ERIP} = G_{i}P_{S} \\[5pt]
+&P_{ERIP} = P_{S} \; 10^{\cfrac{g_{i}}{10db}}  \\[5pt]
+&P_{ERIP} = G_{i}\; (P_{Sender}- P_{Verlust}) \\[5pt]
+\end{align*}
+
+\subsubsection{Q-Match/$\cfrac{\lambda}{4}$ \;- Trafo}
+$Z_{Kabel}=\sqrt{Z_{Ant}Z_{Leitung}}$
+
+\newpage
+\section{Leitungen}
+
+\subsection{Wellenwiederstand}
+
+$$Z_{w} = \sqrt{\cfrac{L'}{C'}}$$
+
+\subsubsection{Paralleldrahtleitung}
+
+$$Z_{w} = \cfrac{120\Omega}{\sqrt{\varepsilon_{r}}} \; ln\left(\cfrac{2a}{d}\right)$$
+
+\subsubsection{Koaxialleitung}
+$$Z_{w} = \cfrac{60\Omega}{\sqrt{\varepsilon_{r}}} \; ln\left(\cfrac{D}{d}\right)$$
+
+\subsection{Verkürzungsfaktor}
+
+\begin{align*}
+&\nu = \cfrac{1}{\sqrt{L'C'}} \\[5pt]
+&k = \cfrac{\nu}{c}  \\[5pt]
+&k = \cfrac{1}{\sqrt{\varepsilon_{r}}}  \\[5pt]
+\end{align*}
+
+\subsection{Dämpfung}
+
+$$n = \sqrt{\cfrac{f_{hoch}}{f_{niedrig}}}$$
+
+\subsection{Transformationsleitung}
+\begin{align*}
+&R_{i} = Z_{w}=Z_{ant} \\[5pt]
+&Z = \sqrt{Z_{1}Z_{2}}\\[5pt]
+&l = (2n-1) \; \cfrac{\lambda}{4} \; k \\[5pt]
+\end{align*}
+
+\subsubsection{Koaxialleitung}
+\begin{align*}
+&Z=\cfrac{138\Omega}{\sqrt{\varepsilon_{r}}} \; \left( \cfrac{D}{d}\right) \\[5pt]
+&D = d \; 10^{\cfrac{Z}{138\Omega}}\\[5pt]
+\end{align*}
+
+\newpage
+\section{Signale}
+\subsection{Effektivspannung}
+\subsubsection{Sinus}
+$$U_{eff}=\cfrac{\text{\^{U}}}{\sqrt{2}}$$
+\subsubsection{Dreieck}
+$$U_{eff}=\cfrac{\text{\^{U}}}{\sqrt{3}}$$
+\subsubsection{Rechteck}
+$$U_{eff}=\text{\^{U}}\sqrt{DutyCycle}$$
+
+\subsection{Wellenlänge \& Frequenz}
+\[
+\begin{minipage}{.5\linewidth}
+  $\lambda=\cfrac{c}{f}$ \\[5pt]
+  $f=\cfrac{c}{\lambda}$ \\[5pt]
+  $u = \^{u}\sin(\omega t+\varphi)$
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $c = Lichtgeschwindugkeit \approx 3*10^{8}$ \\
+  $c = 2.99792458*10^{8}$
+
+\end{minipage}
+\]
+
+\subsection{Bandbreite}
+
+\subsubsection{DSB}
+$$b_{AM}=2f_{mod}$$
+
+\subsubsection{SSB}
+\begin{align*}
+&b_{SSB} = f_{NFmax}-f_{NFmin} \\[5pt]
+&b_{SSB} \approx f_{mod} \\[5pt]
+\end{align*}
+
+\subsubsection{FM}
+
+\begin{align*}
+&b_{FM} = 2(\Delta f_{T} + f_{mod}) \\[5pt]
+&b_{FM} \approx 2 \; \Delta f_{T} \quad \quad f_{mod} \ll \Delta f_{T} \\[5pt]
+&b_{FM} \approx 2 \; f_{mod} \quad \quad m < 0.5 \\[5pt]
+\end{align*}
+
+\subsubsection{CW}
+$$b_{CW} = \cfrac{5*WPM}{1.2}$$
+
+\subsubsection{RTTY}
+$$b_{RTTY}=2\; \left(\cfrac{\Delta f}{2}+1.6 Bd\right)$$
+
+\subsection{Modulationsindex FM}
+$$m=\cfrac{\Delta f_{t}}{f_{mod}}$$
+
+\subsection{Besselfunktion}
+$$u = \^u_{0}\sin(\omega_{t}t-m\cos(\omega_{m}t))$$
+
+\subsection{Peak Envelope Power}
+\[
+\begin{minipage}{.5\linewidth}
+  $PEP = P_{c}(1+m)^2$ 
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $PEP = Peak Envelope Power$ \\
+  $P_{c} = Carrier-Power(Tr\ddot{a}gerleistung)$ \\
+  $m = Modulationsgrad \; bei \; AM$ \\
+\end{minipage}
+\]
+
+\newpage
+\section{Modulation - Demodulation}
+\subsection{Modulationsgrad}
+$$m = \cfrac{\text{\^{U}}_{mod}}{\text{\^{U}}_{T}}$$
+
+\newpage
+\section{Frequenzaufbereitung}
+\subsection{Überlagerung}
+\subsubsection{$f_{osc} \;$>$\; f_{e}$}
+\[
+\begin{minipage}{.5\linewidth}
+	
+  $f_{z} = \cfrac{f_{sp}-f_{e}}{2}$ \\[5pt]
+  $f_{osc} = f_{e} + f_{z}$
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $f_{e} = Eingangsfrequenz$ \\
+  $f_{osc} = Ueberlagerungsfrequenz$ \\
+  $f_{z} = Zwischenfrequenz$ \\
+  $f_{sp} = Spiegelfrequenz$ \\
+\end{minipage}
+\]
+\subsubsection{$f_{osc} \;$<$\; f_{e}$}
+\[
+\begin{minipage}{.5\linewidth}
+	
+  $f_{z} =f_{e}- f_{osc}$ \\[5pt]
+  $f_{sp} = f_{e} - 2 f_{z}$
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $f_{e} = Eingangsfrequenz$ \\
+  $f_{osc} = Ueberlagerungsfrequenz$ \\
+  $f_{z} = Zwischenfrequenz$ \\
+  $f_{sp} = Spiegelfrequenz$ \\
+\end{minipage}
+\]
+\subsection{Frequenz 3.Ordnung}
+$$ 2f_{1}-f_{2} \wedge 2f_{2}-f_{1}$$
+\newpage
+\section{Übertragungstechnik}
+\subsection{Nquisttheorem}
+$$f_{abt} > 2f_{i max}$$
+
+\subsection{Dynamik}
+$$D=20 \; log \left(\frac{U_{max}}{U_{min}}\right) dB$$
+
+\subsection{Baudrate}
+$$\nu_{u}=\cfrac{1}{t_{1bit}} \; Bd$$
+
+\subsection{FSK}
+\subsubsection{Bandbreite}
+\begin{align*}
+&b_{FSK} = 2(\Delta f_{T} + f_{mod}) \\[5pt]
+&b_{FSK} \approx 2 \; \left(\cfrac{\Delta F}{2}+1.6 \; f_{u} \right)\\[5pt]
+\end{align*}
+
+\subsection{PSK}
+\subsubsection{Bandbreite}
+\begin{align*}
+&b_{PSK} = 2(\Delta f_{T} + f_{mod}) \\[5pt]
+&b_{PSK} = 2 \cfrac{\nu_{u}}{2} = \nu_{u} \\[5pt]
+\end{align*}
+
+\subsection{Totales Verbindungssystem}
+\[
+\begin{minipage}{.5\linewidth}
+  $N=S\cfrac{S-1}{2}$
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $N = Strecken$ \\
+  $S = Stationen$
+
+\end{minipage}
+\]
+
+\newpage
+\section{Messtechnik}
+\subsection{Wheatstonsche Messbrücke}
+
+\begin{center}
+\begin{circuitikz}[scale=0.75,transform shape] \draw
+(3,5) to[ short, o-o ] (6,5)
+(6,1) node[anchor=west] {$-$}
+(6,5) node[anchor=west] {$+$}
+(3,5) to[ R, l_=$R_1$, *-* ] (1,3)
+(1,3) to[ R, l_=$R_x$, *-* ] (3,1)
+(3,1) to[ R, l_=$R_4$, *-* ] (5,3)
+(5,3) to[ R, l_=$R_3$, *-* ] (3,5)
+(1,3) to[ ammeter, *-* ] (5,3)
+(3,1) to[ short, *-o ] (6,1); 
+\end{circuitikz}
+\end{center}
+
+$$R = \cfrac{R_{4}R_{1}}{R_{3}}$$
+
+\subsection{Shunt}
+\[
+\begin{minipage}{.5\linewidth}
+  $U=R_{Instr}I_{Instr} = R_{p}I_{P}$ \\[5pt]
+  $I_{p}=I_{Messbereich}-I_{Instrument}$ \\[5pt]
+  $R_{p}=\cfrac{U}{I_{p}}$\\[5pt]
+  $R_{p}=\cfrac{R_{Instr}}{n-1}$\\[5pt]
+  $R_{s}=R_{Instr}(n-1)$\\[5pt]
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $R_{Instr} = Instrumentwiderstand$ \\
+  $R_{p} = Shuntwiderstand \; parallel$ \\
+  $R_{s} = Shuntwiderstand \; seriell$ \\
+  $I_{p} = Strom \; durch \; Shunt$\\
+  $I_{instr} = Instrumentenstrom$\\
+  $n = Messbereichserweiterungsfraktor$
+\end{minipage}
+\]
+
+\subsection{SWR/VSWR}
+\[
+\begin{minipage}{.5\linewidth}
+  $s=\cfrac{U_{max}}{U_{min}} = \cfrac{U_{v}+U_{r}}{U_{v}-U_{r}} = \cfrac{1+|r|}{1-|r|}= \cfrac{\sqrt{P_{v}}+\sqrt{P_{r}}}{\sqrt{P_{v}}-\sqrt{P_{r}}}$ \\[5pt]
+  $|r| =\cfrac{U_{r}}{U_{v}} = \sqrt{\cfrac{P_{r}}{P_{v}}} = \cfrac{s-1}{s+1}$ \\[5pt]
+  $s =\cfrac{R_{2}}{Z} \quad R_{2} \geq Z$ \\[5pt]
+  $s =\cfrac{Z}{R_{2}} \quad R_{2} \leq Z$ \\[5pt]
+  
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $s = SWR/VSWR$ \\
+  $r = Reflexionsfaktor$ \\
+  $Z = Wellenwiederstand \; (der \; Leitung)$ \\
+  $R_{2} = Abschlusswiederstand$ \\
+  $U_{v} = hinlaufende \; Welle$ \\
+  $U_{r} = rücklaufende \; Welle$ \\
+  
+\end{minipage}
+\]
+
+\newpage
+\section{Gerätetechnik}
+\subsection{Empfindlichkeit}
+\[
+\begin{minipage}{.5\linewidth}
+  $P_{R}=kT_{0} bF$ \\[5pt]
+  $U_{R}=\sqrt{kT_{0} bRF}$
+  
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $k = 1.38*10^{-23} \; (Boltzmann \; Konstante)$ \\
+  $T_{0} = Temperatur \; [K]$ \\
+  $b = Bandbreite \; [Hz]$ \\
+  $R = Eingangswiederstand$ \\
+  $F = Rauschfaktor$ \\
+  $P_{R} = Rauschleistung$ \\
+  $U_{R} = Rauschspannung$ \\
+  
+\end{minipage}
+\]
+
+\newpage
+\section{EMV und Sicherheit}
+\subsection{Windlast}
+\[
+\begin{minipage}{.5\linewidth}
+  $F_{A}=pA$ \\[5pt]
+  
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+  \fontsize{8pt}{9pt}\selectfont
+  $p = Staudruck \; \left[\cfrac{N}{m^2}\right]$ \\
+  $A = Wirckfläche \; [m^2]$ \\
+  
+\end{minipage}
+\]
+
+\subsection{Biegemoment}
+$$M_{A} = \sum F_{i} l_{i}$$
+
+\subsection{Sicherheitsabstand}
+$$d = \cfrac{\sqrt{30 \Omega \; P_{ERIP}}}{E}$$
+\end{document}

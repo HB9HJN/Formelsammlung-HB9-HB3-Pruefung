@@ -5,4 +5,6 @@ Diese Formelsammlung habe ich Für die HB9/3 Prüfung erstellt. Es gibt eine Aus
 ## Download
 * [Formelsammlung __mit__ Grafiken](https://github.com/HB9HJN/Formelsammlung-HB9-HB3-Pruefung/raw/main/FORMELNHB9.pdf)
 * [Formelsammlung __ohne__ Grafiken](https://github.com/HB9HJN/Formelsammlung-HB9-HB3-Pruefung/raw/main/FORMELNHB9noIMG.pdf)
+* [Formelsammlung AMIV Style __mit__ Grafiken](https://github.com/HB9HJN/Formelsammlung-HB9-HB3-Pruefung/raw/main/FORMELNHB9_AMIVStyle.pdf)
+* [Formelsammlung AMIV Style __ohne__ Grafiken](https://github.com/HB9HJN/Formelsammlung-HB9-HB3-Pruefung/raw/main/FORMELNHB9noIMG_AMIVStyle.pdf)
 

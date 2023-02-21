@@ -4,6 +4,7 @@
 \usepackage{hyperref}
 \usepackage{babel}
 \usepackage[paper=a5paper,left=15mm,right=15mm,top=20mm,bottom=20mm]{geometry}
+\usepackage{mathtools}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{circuitikz}
@@ -299,8 +300,7 @@ $$b = f_{max}-f_{min}= \frac{f_{res}}{Q}$$
 \[
 \begin{minipage}{.5\linewidth}
 	
-  $Q = \cfrac{1}{R_{s}}*\sqrt{\cfrac{L}{C}} = \cfrac{f_{res}}{b}= \cfrac{R_{p}}{X_{L}} =$ \\[5pt]
-  $ \cfrac{X_{L}}{R_{s}} $ \\[5pt]
+  $\mathrlap{Q = \cfrac{1}{R_{s}}*\sqrt{\cfrac{L}{C}} = \cfrac{f_{res}}{b}= \cfrac{R_{p}}{X_{L}} = \cfrac{X_{L}}{R_{s}}} $ \\[5pt]
   $b = \cfrac{R_{s}}{2\pi L}$\\[5pt]
   $R_{s} = \cfrac{1}{Q}*\sqrt{\cfrac{L}{C}}$\\[5pt]
   $R_{res} = \cfrac{2 \pi f_{res} L}{Q}$
@@ -582,7 +582,7 @@ $$ l = k \; \cfrac{\lambda}{2} \quad n \in [0.93,0.97]$$
 \end{align*}
 
 \subsubsection{Q-Match/$\cfrac{\lambda}{4}$ \;- Trafo}
-$Z_{Kabel}=\sqrt{Z_{Ant}Z_{Leitung}}$
+$$Z_{Kabel}=\sqrt{Z_{Ant}Z_{Leitung}}$$
 
 \newpage
 \section{Leitungen}
@@ -813,7 +813,7 @@ $$R = \cfrac{R_{4}R_{1}}{R_{3}}$$
 \subsection{SWR/VSWR}
 \[
 \begin{minipage}{.5\linewidth}
-  $s=\cfrac{U_{max}}{U_{min}} = \cfrac{U_{v}+U_{r}}{U_{v}-U_{r}} = \cfrac{1+|r|}{1-|r|}= \cfrac{\sqrt{P_{v}}+\sqrt{P_{r}}}{\sqrt{P_{v}}-\sqrt{P_{r}}}$ \\[5pt]
+  $\mathrlap{s=\cfrac{U_{max}}{U_{min}} = \cfrac{U_{v}+U_{r}}{U_{v}-U_{r}} = \cfrac{1+|r|}{1-|r|}= \cfrac{\sqrt{P_{v}}+\sqrt{P_{r}}}{\sqrt{P_{v}}-\sqrt{P_{r}}}}$ \\[5pt]
   $|r| =\cfrac{U_{r}}{U_{v}} = \sqrt{\cfrac{P_{r}}{P_{v}}} = \cfrac{s-1}{s+1}$ \\[5pt]
   $s =\cfrac{R_{2}}{Z} \quad R_{2} \geq Z$ \\[5pt]
   $s =\cfrac{Z}{R_{2}} \quad R_{2} \leq Z$ \\[5pt]
